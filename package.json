@@ -1,0 +1,25 @@
+{
+  "name": "canonicalize-addon-name",
+  "version": "1.0.0",
+  "description": "Migrates application code that was using a mismatched addon name",
+  "main": "index.js",
+  "author": "Chad Hietala <chadhietala@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "broccoli-babel-transpiler": "^7.1.0",
+    "execa": "^1.0.0",
+    "jscodeshift": "^0.5.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "globby": "^8.0.1",
+    "jest": "^23.6.0"
+  }
+}
