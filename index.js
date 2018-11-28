@@ -2,7 +2,7 @@ const Babel = require('broccoli-babel-transpiler');
 const path = require('path');
 const execa = require('execa');
 
-function generateDeprectedAliases(tree, oldName, newName) {
+function generateDeprecatedAliases(tree, oldName, newName) {
   if (oldName === newName) {
     return tree;
   }
@@ -45,7 +45,7 @@ function fixupImportsCommand(prefix, oldName, newName) {
 }
 
 module.exports = {
-  generateDeprectedAliases,
+  generateDeprecatedAliases,
   command(prefix, oldName, newName) {
     return {
       [`${prefix}:fixup-imports`]: fixupImportsCommand(prefix, oldName, newName)
