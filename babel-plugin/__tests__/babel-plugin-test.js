@@ -8,6 +8,7 @@ const path = require('path');
 const fs = require('fs');
 const transform = require('babel-core').transform;
 const plugin = require('../index').createDeprecatedAliases;
+const DEV = process.env.EMBER_ENV === 'development';
 jest.disableAutomock();
 
 describe('babel-plugin', () => {
@@ -18,7 +19,7 @@ describe('babel-plugin', () => {
     transform: entry =>
       entry.slice(entry.indexOf('__testfixtures__') + '__testfixtures__'.length + 1),
   }).forEach(file => {
-    let outFilePath = file.replace('.input.', '.output.');
+    let outFilePath = file.replace('.input.', `.output.${DEV ? 'dev' : 'prod'}.`);
     let optionsFilePath = file.replace('.input.', '.options.');
     optionsFilePath = optionsFilePath.replace(path.extname(file), '.json');
     let inputContent = fs.readFileSync(path.join(__dirname, `../__testfixtures__/${file}`), 'utf8');
@@ -30,6 +31,5 @@ describe('babel-plugin', () => {
       });
       expect(transformed.code).toEqual(outputContent);
     })
-
   });
 });
