@@ -17,10 +17,25 @@ exports.createDeprecatedAliases = function createDeprecatedAliases({ oldName, ne
           },
           exit(path) {
             let oldModuleName = newModuleName.replace(newName, oldName);
+            let arg = path.scope.generateUidIdentifier(newModuleName);
             let callExpression = t.expressionStatement(
               t.callExpression(
-                t.memberExpression(t.identifier('define'), t.identifier('alias')),
-                [t.stringLiteral(oldModuleName), t.stringLiteral(newModuleName)]
+                t.identifier('define'),
+                [
+                  t.stringLiteral(oldModuleName),
+                  t.arrayExpression([t.stringLiteral(newModuleName)]),
+                  t.functionExpression(null, [
+                    arg
+                  ], t.blockStatement([
+                    t.expressionStatement(
+                      t.callExpression(
+                        t.memberExpression(t.identifier('console'), t.identifier('warn')),
+                        [t.stringLiteral(`Importing from "${oldModuleName}" is deprecated. Please update the import to "${newModuleName}".`)]
+                      )
+                    ),
+                    t.returnStatement(arg)
+                  ]))
+                ]
               )
             );
             path.pushContainer('body', callExpression);
