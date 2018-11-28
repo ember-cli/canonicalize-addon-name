@@ -1,4 +1,6 @@
 define('b', [exports], function (exports) {
   exports._default = function () {};
 });
-define.alias('a', 'b');
+define('a', ['b'], function (_b) {
+  return _b;
+});

@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "jest"
+    "test": "EMBER_ENV=development jest; jest"
   },
   "dependencies": {
     "broccoli-babel-transpiler": "^7.1.0",
