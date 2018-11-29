@@ -10,7 +10,7 @@
     "test": "EMBER_ENV=development jest; jest"
   },
   "dependencies": {
-    "broccoli-babel-transpiler": "^7.1.0",
+    "broccoli-babel-transpiler": "^6.5.0",
     "execa": "^1.0.0",
     "jscodeshift": "^0.5.1"
   },
