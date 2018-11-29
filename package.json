@@ -1,6 +1,6 @@
 {
   "name": "canonicalize-addon-name",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Migrates application code that was using a mismatched addon name",
   "main": "index.js",
   "author": "Chad Hietala <chadhietala@gmail.com>",
